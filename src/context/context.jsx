@@ -23,7 +23,7 @@ const Appcontext = ({ children }) => {
    
     const getData = async () => {
         try {
-            const res = await fetch('http://localhost:8000/api/product?limit=28')
+            const res = await fetch('https://eye-back.vercel.app/api/product?limit=28')
             const data = await res.json()
             setStoreGlobal((storeGlobal) => {
                 return { ...storeGlobal, itemArray: data.products }
