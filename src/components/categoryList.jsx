@@ -10,7 +10,7 @@ const CategoryList = () => {
     const getData = async () => {
         try {
 
-            const res = await fetch('http://localhost:8000/api/category')
+            const res = await fetch('https://eye-back.vercel.app/api/category')
             const data = await res.json()
             setCategory(data.categories)
         }

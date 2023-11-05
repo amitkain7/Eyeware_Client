@@ -20,7 +20,7 @@ const Checkout = () => {
         try {
           const token = localStorage.getItem('token')
 
-          const res = await fetch('http://localhost:8000/api/payment/verify', {
+          const res = await fetch('https://eye-back.vercel.app/api/payment/verify', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const Checkout = () => {
     try {
       const token = localStorage.getItem('token')
 
-      const res = await fetch('http://localhost:8000/api/payment/order', {
+      const res = await fetch('https://eye-back.vercel.app/api/payment/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
