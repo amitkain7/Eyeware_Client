@@ -12,8 +12,8 @@ const Checkout = () => {
 
   const navigate = useNavigate()
   const initPayment = (data) => {
-
     const options = {
+      
       key: "rzp_test_ClU8FLSvKyioKw",
       amount: data.amount,
       currency: data.currency,
@@ -21,17 +21,19 @@ const Checkout = () => {
       description: "Test Transaction",
       order_id: data.id,
       handler: async (response) => {
-        console.log(response)
-        const token = localStorage.getItem('token')
-        const res = await fetch('https://eye-back.vercel.app/api/payment/verify', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(response)
-        })
-        const data = await res.json()
+        try {
+          const token = localStorage.getItem('token')
+
+          const res = await fetch('https://eye-back.vercel.app/api/payment/verify', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(response)
+          })
+          const data = await res.json()
+          if(data.msg == 'payment verified successfully'){
 
         if (data.msg === 'payment verified successfully') {
           setTotal()
@@ -66,12 +68,12 @@ const Checkout = () => {
   const handlePayment = async () => {
     try {
       const token = localStorage.getItem('token')
+
       const res = await fetch('https://eye-back.vercel.app/api/payment/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'authorization': `Bearer ${token}`
-
+          'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({ amount: total })
       })

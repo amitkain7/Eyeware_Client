@@ -50,12 +50,15 @@ const CategoryProduct = ({ category }) => {
     
     const navigate = useNavigate()
 
-    
+    const handleButtonClick = () => {
+        // Navigate to the "products" page and pass the filter value as a query parameter
+        navigate(`/products?filter=${categoryName}`);
+    };
     return (
 
         <section
             className=" flex flex-col items-center rounded-xl  bg-black cursor-pointer gap-3 relative   "
-            onClick={() => navigate(`/products?filter=${categoryName}`)}
+
         >
             <img 
                 
@@ -69,7 +72,7 @@ const CategoryProduct = ({ category }) => {
                absolute left-0 right-0 bottom-0 top-0 bg-black/[0.3] rounded-xl"
             >
                 <h1 className="text-4xl sm:text-8xl lg:text-6xl font-extrabold  text-white   hover:scale-110 transition">
-                    <button >{categoryName}</button>
+                    <button onClick={handleButtonClick} >{categoryName}</button>
                 </h1>
             </div>
         </section>
