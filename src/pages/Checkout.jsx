@@ -9,7 +9,9 @@ const Checkout = () => {
   const { total } = storeGlobal
   const navigate = useNavigate()
   const initPayment = (data) => {
+    console.log(data)
     const options = {
+      
       key: "rzp_test_ClU8FLSvKyioKw",
       amount: data.amount,
       currency: data.currency,
