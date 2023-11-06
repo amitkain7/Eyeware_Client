@@ -20,13 +20,12 @@ const Checkout = () => {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const token = localStorage.getItem('token')
 
           const res = await fetch('https://eye-back.vercel.app/api/payment/verify', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
+              
             },
             body: JSON.stringify(response)
           })
@@ -53,13 +52,13 @@ const Checkout = () => {
 
   const handlePayment = async () => {
     try {
-      const token = localStorage.getItem('token')
+     
 
       const res = await fetch('https://eye-back.vercel.app/api/payment/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+        
         },
         body: JSON.stringify({ amount: total })
       })
